@@ -54,7 +54,7 @@ export default function Form(props) {
                     <label id='pepperoni'>pepperoni&nbsp;
                         <input
                             name='pepperoni'
-                            checked={values.pepperoni}
+                            checked={values.toppings.pepperoni}
                             onChange={onCheckboxChange}
                             type='checkbox'
                         />
@@ -63,7 +63,7 @@ export default function Form(props) {
                     <label id='pineapple'>pineapple&nbsp;
                         <input
                             name='pineapple'
-                            checked={values.pineapple}
+                            checked={values.toppings.pineapple}
                             onChange={onCheckboxChange}
                             type='checkbox'
                         />
@@ -72,7 +72,7 @@ export default function Form(props) {
                     <label id='chicken'>chicken&nbsp;
                         <input
                             name='chicken'
-                            checked={values.chicken}
+                            checked={values.toppings.chicken}
                             onChange={onCheckboxChange}
                             type='checkbox'
                         />
@@ -81,17 +81,17 @@ export default function Form(props) {
                     <label id='mushrooms'>mushrooms&nbsp;
                         <input
                             name='mushrooms'
-                            checked={values.mushrooms}
+                            checked={values.toppings.mushrooms}
                             onChange={onCheckboxChange}
                             type='checkbox'
                         />
                     </label>
                 </div>
 
-                <div classname='form-group inputs'>
+                <div className='form-group inputs'>
                     <label id='special-intructions'>Special Instructions&nbsp;
                             <input
-                                name='intructions'
+                                name='instructions'
                                 value={values.intructions}
                                 onChange={onInputChange}
                                 type='text'

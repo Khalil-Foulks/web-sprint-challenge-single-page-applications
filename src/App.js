@@ -19,7 +19,7 @@ const initialFormValues = {
     mushrooms:false,
   },
 
-  intructions:'',
+  instructions:'',
 }
 
 const initialFormErrors = {
@@ -37,7 +37,7 @@ const App = () => {
 
 
   const postNewPizza = newPizza => {
-    axios('https://reqres.in/api/users', newPizza)
+    axios.post('https://reqres.in/api/users', newPizza)
     .then(res =>{
       setPizzaData([...pizzaData,res.data])
     })
@@ -80,7 +80,10 @@ const App = () => {
 
     setFormValues({
       ...formValues, 
-      [name]:checked,
+      toppings: {
+        ...formValues.toppings,
+        [name]:checked,
+      }
     })
   }
 
@@ -117,7 +120,7 @@ const App = () => {
       </nav>
 
       <Switch>
-        <Route path="/pizza">
+        <Route path='/pizza'>
           <Form
             values={formValues}
             onInputChange={onInputChange}
@@ -130,7 +133,7 @@ const App = () => {
       </Switch>
 
       <Switch>
-        <Route path="/">
+        <Route path='/'>
           <HomePage/>
         </Route>
       </Switch>
