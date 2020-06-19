@@ -6,7 +6,7 @@ export default function HomePage() {
       <header>
         <img
           className="main-img"
-          src='/Assets/Pizza.jpg'
+          src= './Assets/Pizza.jpg'
           alt="Pizza"
         />
       </header>
