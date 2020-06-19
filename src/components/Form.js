@@ -1,6 +1,16 @@
 import React from "react";
 
 export default function Form(props) {
+
+    const {
+        values,
+        onSubmit,
+        onInputChange,
+        onCheckboxChange,
+        disabled,
+        errors,
+      } = props
+
   return (
     <section className="form">
       <div>
@@ -39,7 +49,7 @@ export default function Form(props) {
                 </div>
 
                 <div className='toppings checkboxes'>
-                    <h4>Hobbies</h4>
+                    <h4>Extra Toppings</h4>
                     
                     <label id='pepperoni'>pepperoni&nbsp;
                         <input

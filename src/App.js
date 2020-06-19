@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HomePage from './components/HomePage'
 import Form from './components/Form'
 import { Switch, Route, Link } from 'react-router-dom'
@@ -31,7 +31,7 @@ const initialDisabled = true
 const App = () => {
   const [pizzaData, setPizzaData] = useState([])
   const [formValues, setFormValues] = useState(initialFormValues)
-  const [formErros, setFormErrors] = useState(initialFormErrors)
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)
 
 
@@ -49,12 +49,66 @@ const App = () => {
     })
   }
 
+  const onInputChange = evt => {
+    const name = evt.target.name
+    const value = evt.target.value
+
+    yup
+    .reach(formSchema, name)
+    .validate(value)
+    .then(valid =>{
+      setFormErrors({
+        ...formErrors,
+        [name]: ""
+      });
+    })
+    .catch(err => {
+      setFormErrors({
+        ...formErrors,
+        [name]: err.errors[0]
+      });
+    });
+
+    setFormValues({
+      ...formValues,
+      [name]:value,
+    })
+  }
+
+  const onCheckboxChange = evt => {
+    const { name, checked } =evt.target
+
+    setFormValues({
+      ...formValues, 
+      [name]:checked,
+    })
+  }
+
+  const onSubmit = evt => {
+    evt.preventDefault()
+
+    const newPizza = {
+      name:formValues.name.trim(),
+      size:formValues.size,
+      instructions: formValues.instructions,
+      toppings: Object.keys(formValues.toppings)
+        .filter(toppingName => (formValues.toppings[toppingName] === true))
+    }
+
+    postNewPizza(newPizza)
+  }
+
+  useEffect(() =>{
+    formSchema.isValid(formValues).then(valid =>{
+      setDisabled(!valid);
+    });
+  }, [formValues])
 
 
   return (
     <>
       <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      {/* <p>You can remove this code and create your own header</p> */}
       <nav>
         <div className='nav-links'>
             <Link to='/'>Home</Link>
@@ -64,7 +118,14 @@ const App = () => {
 
       <Switch>
         <Route path="/pizza">
-          <Form/>
+          <Form
+            values={formValues}
+            onInputChange={onInputChange}
+            onCheckboxChange={onCheckboxChange}
+            onSubmit={onSubmit}
+            disabled={disabled}
+            errors={formErrors}
+          />
         </Route>
       </Switch>
 
