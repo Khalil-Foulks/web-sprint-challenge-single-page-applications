@@ -99,6 +99,7 @@ const App = () => {
     }
 
     postNewPizza(newPizza)
+    console.log(newPizza)
   }
 
   useEffect(() =>{
