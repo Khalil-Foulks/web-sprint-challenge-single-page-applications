@@ -111,11 +111,11 @@ const App = () => {
 
   return (
     <>
-      <h1>Lambda Eats</h1>
+      <h1 style={{textAlign:`center`}}>Lambda Eats</h1>
       {/* <p>You can remove this code and create your own header</p> */}
       <nav>
-        <div className='nav-links'>
-            <Link to='/' id='home'>Home</Link>
+        <div className='nav-links' style={{margin:`3% 0`, textAlign:`center` }}>
+            <Link to='/' id='home' style={{margin:`1%`}}>Home</Link>
             <Link to='/pizza' id='orderPizza'>Make Pizza</Link>
         </div>
       </nav>
