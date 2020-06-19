@@ -14,11 +14,6 @@ export default function Form(props) {
   return (
     <section className="form">
       <div>
-        <img
-          className="main-img"
-          src='Assets\Pizza.jpg'
-          alt="Pizza"
-        />
 
         <form className='form container' onSubmit={onSubmit}>
             <div className='form-group inputs'>

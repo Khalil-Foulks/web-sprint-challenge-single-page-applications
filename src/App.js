@@ -114,8 +114,8 @@ const App = () => {
       {/* <p>You can remove this code and create your own header</p> */}
       <nav>
         <div className='nav-links'>
-            <Link to='/'>Home</Link>
-            <Link to='/pizza'>Make Pizza</Link>
+            <Link to='/' id='home'>Home</Link>
+            <Link to='/pizza' id='orderPizza'>Make Pizza</Link>
         </div>
       </nav>
 
@@ -130,9 +130,7 @@ const App = () => {
             errors={formErrors}
           />
         </Route>
-      </Switch>
 
-      <Switch>
         <Route path='/'>
           <HomePage/>
         </Route>
