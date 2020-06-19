@@ -14,30 +14,31 @@ export default function Form(props) {
             <div className='form-group inputs'>
                 <div>{errors.name}</div>
 
-                <label id='name'>Name&nbsp;
-                    <input
-                        name='name'
-                        value={values.name}
-                        onChange={onInputChange}
-                        type='text'
-                    />
-                </label>
+                <div className='inputs'>
+                    <label id='name'>Name&nbsp;
+                        <input
+                            name='name'
+                            value={values.name}
+                            onChange={onInputChange}
+                            type='text'
+                        />
+                    </label>
 
-                
-                <label id='size'>Size&nbsp;
-                    <select
-                        name='size'
-                        value={values.size}
-                        onChange={onInputChange}
-                    >
-                        <option value=''>--Select A Size--</option>   
-                        <option value='Small'>Small</option>
-                        <option value='Medium'>Medium</option> 
-                        <option value='Large'>Large</option>  
-                    </select>
-                </label>
+                    <label id='size'>Size&nbsp;
+                        <select
+                            name='size'
+                            value={values.size}
+                            onChange={onInputChange}
+                        >
+                            <option value=''>--Select A Size--</option>   
+                            <option value='Small'>Small</option>
+                            <option value='Medium'>Medium</option> 
+                            <option value='Large'>Large</option>  
+                        </select>
+                    </label>
+                </div>
 
-                <div className='toppings'>
+                <div className='toppings checkboxes'>
                     <h4>Hobbies</h4>
                     
                     <label id='pepperoni'>pepperoni&nbsp;
@@ -77,14 +78,16 @@ export default function Form(props) {
                     </label>
                 </div>
 
-                <label id='special-intructions'>Special Instructions&nbsp;
-                        <input
-                            name='intructions'
-                            value={values.intructions}
-                            onChange={onInputChange}
-                            type='text'
-                        />
-                </label>
+                <div classname='form-group inputs'>
+                    <label id='special-intructions'>Special Instructions&nbsp;
+                            <input
+                                name='intructions'
+                                value={values.intructions}
+                                onChange={onInputChange}
+                                type='text'
+                            />
+                    </label>
+                </div>
             </div>
             <div className='form-group submit'>
                 <button id='submit' disabled={disabled}>Add to Order</button>
